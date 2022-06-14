@@ -2,6 +2,11 @@
 
 ## Project setup
 ```
+启动serve服务：进入serve目录 [安装依赖 npm install ; 执行 node index.js]
+```
+
+## Project setup
+```
 npm install
 ```
 
