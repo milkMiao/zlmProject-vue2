@@ -1,13 +1,33 @@
 <template>
-  <button disabled class="a-button a-button-success is-round">默认按钮</button>
+  <button class="a-button" :class="[theme]">
+    <slot></slot>
+  </button>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Abutton",
+  props: {
+    type: {
+      type: String,
+      default: "",
+    },
+  },
+  computed: {
+    theme() {
+        console.log(this.type);
+        return this.type ? `a-button-${this.type}` : ''
+    },
+  },
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .a-button {
+  //默认样式
   padding: 0 20px;
   border-width: 1px;
   border-style: solid;
@@ -18,15 +38,17 @@ export default {};
   color: #606266;
   height: 40px;
 }
-.a-button[disabled]{
-    opacity: 0.5;
-    cursor: not-allowed;
+.a-button[disabled] {
+  //禁用样式
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 .a-button-primary {
   background-color: #409eff;
   border-color: #409eff;
   color: #fff;
   &.is-border {
+    //边框样式
     background-color: transparent;
     color: #409eff;
   }
@@ -60,7 +82,8 @@ export default {};
 }
 
 /**圆角*/
-.is-round{
-    border-radius: 100px;
+.is-round {
+  //圆角样式
+  border-radius: 100px;
 }
 </style>
