@@ -7,6 +7,9 @@
     <Abutton type="success" round>success</Abutton>
     <Abutton type="warning" disabled>warning</Abutton>
     <Abutton type="danger">danger</Abutton>
+
+    <br />
+    <Abutton minWidth="200px">弹性宽度</Abutton>
   </div>
 </template>
 

@@ -3,6 +3,7 @@
     class="a-button"
     :disabled="disabled"
     :class="[theme, isBorder, isRound, sizes]"
+    :style="minWidthCss"
   >
     <slot></slot>
   </button>
@@ -25,6 +26,11 @@ export default {
       type: String,
       default: "",
     },
+    minWidth: {//弹性宽度
+      //按钮大小
+      type: String,
+      default: "",
+    },
   },
   computed: {
     theme() {
@@ -39,6 +45,10 @@ export default {
     },
     sizes() {
       return this.size ? `a-button-${this.size}` : "";
+    },
+    minWidthCss() {
+      if(!this.minWidth) return ""
+      return {'min-width': this.minWidth}
     },
   },
   data() {
