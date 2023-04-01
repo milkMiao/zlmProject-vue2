@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <nav>
+    <!-- <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </nav>
+    </nav> -->
+
+    <h1>封装element-UI组件</h1>
     <router-view/>
   </div>
 </template>
