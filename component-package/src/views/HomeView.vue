@@ -21,10 +21,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.home{
-  background: pink;
-  padding: 20px;
-}
-</style>
