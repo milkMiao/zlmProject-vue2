@@ -1,5 +1,5 @@
 <template>
-  <button class="a-button" :class="[theme]">
+  <button class="a-button" :disabled="disabled" :class="[theme, isBorder, isRound]">
     <slot></slot>
   </button>
 </template>
@@ -8,15 +8,24 @@
 export default {
   name: "Abutton",
   props: {
-    type: {
+    type: { //主题色
       type: String,
       default: "",
     },
+    border: Boolean,//是否需要边框,默认false
+    round: Boolean,//是否圆角,默认false
+    disabled: Boolean //是否禁用,默认false
   },
   computed: {
     theme() {
-        console.log(this.type);
-        return this.type ? `a-button-${this.type}` : ''
+      console.log(this.type);
+      return this.type ? `a-button-${this.type}` : "";
+    },
+    isBorder() {
+      return this.border ? "is-border" : "";
+    },
+    isRound() {
+      return this.round ? "is-round" : "";
     },
   },
   data() {
