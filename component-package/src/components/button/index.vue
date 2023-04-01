@@ -1,5 +1,9 @@
 <template>
-  <button class="a-button" :disabled="disabled" :class="[theme, isBorder, isRound]">
+  <button
+    class="a-button"
+    :disabled="disabled"
+    :class="[theme, isBorder, isRound, sizes]"
+  >
     <slot></slot>
   </button>
 </template>
@@ -8,13 +12,19 @@
 export default {
   name: "Abutton",
   props: {
-    type: { //主题色
+    type: {
+      //主题色
       type: String,
       default: "",
     },
-    border: Boolean,//是否需要边框,默认false
-    round: Boolean,//是否圆角,默认false
-    disabled: Boolean //是否禁用,默认false
+    border: Boolean, //是否需要边框,默认false
+    round: Boolean, //是否圆角,默认false
+    disabled: Boolean, //是否禁用,默认false
+    size: {
+      //按钮大小
+      type: String,
+      default: "",
+    },
   },
   computed: {
     theme() {
@@ -26,6 +36,9 @@ export default {
     },
     isRound() {
       return this.round ? "is-round" : "";
+    },
+    sizes() {
+      return this.size ? `a-button-${this.size}` : "";
     },
   },
   data() {
@@ -46,6 +59,22 @@ export default {
   font-size: 14px;
   color: #606266;
   height: 40px;
+}
+.a-button-medium {
+  //size中型
+  height: 36px;
+}
+.a-button-small {
+  //size小型
+  padding: 0 15px;
+  height: 32px;
+  font-size: 12px;
+}
+.a-button-mini {
+  //size迷你型
+  padding: 0 15px;
+  height: 28px;
+  font-size: 12px;
 }
 .a-button[disabled] {
   //禁用样式
