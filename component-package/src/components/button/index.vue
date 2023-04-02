@@ -2,7 +2,7 @@
   <button
     class="a-button"
     :disabled="disabled"
-    :class="[theme, isBorder, isRound, sizes]"
+    :class="[theme, isBorder, isRound, sizes, blockCss]"
     :style="minWidthCss"
   >
     <span>
@@ -25,6 +25,7 @@ export default {
     border: Boolean, //是否需要边框,默认false
     round: Boolean, //是否圆角,默认false
     disabled: Boolean, //是否禁用,默认false
+    block: Boolean, //块级block
     size: { // medium、small、mini
       //按钮大小
       type: String,
@@ -70,6 +71,9 @@ export default {
     iconSuffix() {
       return this.suffix ? `icon-${this.suffix}` : "";
     },
+    blockCss(){
+        return this.block ? "a-button-block" : "";
+    }
   },
   data() {
     return {};
@@ -168,5 +172,10 @@ export default {
 .is-round {
   //圆角样式
   border-radius: 100px;
+}
+
+/*块级block*/
+.a-button-block{
+    display: block;
 }
 </style>
