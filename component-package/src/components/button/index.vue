@@ -5,7 +5,11 @@
     :class="[theme, isBorder, isRound, sizes]"
     :style="minWidthCss"
   >
-    <slot></slot>
+    <span>
+      <i v-if="perfix" class="iconfont icon-perfix" :class="iconPerfix"></i>
+      <slot></slot>
+      <i v-if="suffix" class="iconfont icon-suffix" :class="iconSuffix"></i>
+    </span>
   </button>
 </template>
 
@@ -21,13 +25,23 @@ export default {
     border: Boolean, //是否需要边框,默认false
     round: Boolean, //是否圆角,默认false
     disabled: Boolean, //是否禁用,默认false
-    size: {
+    size: { // medium、small、mini
       //按钮大小
       type: String,
       default: "",
     },
-    minWidth: {//弹性宽度
-      //按钮大小
+    minWidth: {
+      //弹性宽度
+      type: String,
+      default: "",
+    },
+    perfix: {
+      //icon前缀图标
+      type: String,
+      default: "",
+    },
+    suffix: {
+      //icon后缀图标
       type: String,
       default: "",
     },
@@ -47,8 +61,14 @@ export default {
       return this.size ? `a-button-${this.size}` : "";
     },
     minWidthCss() {
-      if(!this.minWidth) return ""
-      return {'min-width': this.minWidth}
+      if (!this.minWidth) return "";
+      return { "min-width": this.minWidth };
+    },
+    iconPerfix() {
+      return this.perfix ? `icon-${this.perfix}` : "";
+    },
+    iconSuffix() {
+      return this.suffix ? `icon-${this.suffix}` : "";
     },
   },
   data() {
@@ -69,6 +89,17 @@ export default {
   font-size: 14px;
   color: #606266;
   height: 40px;
+  +.a-button{margin-left: 10px;}
+  > span {
+    //弹性布局--使icon水平线一致
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+    i { width: 14px;height: 14px;}
+    .icon-perfix { margin-right: 10px;}
+    .icon-suffix { margin-left: 10px;}
 }
 .a-button-medium {
   //size中型
@@ -79,12 +110,16 @@ export default {
   padding: 0 15px;
   height: 32px;
   font-size: 12px;
+  .icon-perfix { margin-right: 5px;}
+  .icon-suffix { margin-left: 5px;}
 }
 .a-button-mini {
   //size迷你型
   padding: 0 15px;
   height: 28px;
   font-size: 12px;
+  .icon-perfix { margin-right: 5px;}
+  .icon-suffix { margin-left: 5px;}
 }
 .a-button[disabled] {
   //禁用样式
