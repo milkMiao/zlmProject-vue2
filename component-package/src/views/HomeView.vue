@@ -16,11 +16,13 @@
     
     <br />
     <!-- perfix前缀icon名称，suffix后缀icon名称 -->
-    <Abutton block perfix="lingdang" size="small">前后缀按钮</Abutton>
+    <Abutton perfix="lingdang" size="small">前后缀按钮</Abutton>
     <Abutton suffix="lingdang" size="mini">后缀按钮</Abutton>
 
     <br />
     <Abutton block type="danger">块级Block</Abutton>
+
+    <Abutton :loading="true" type="primary">加载按钮</Abutton>
   </div>
 </template>
 

@@ -1,11 +1,12 @@
 <template>
   <button
     class="a-button"
-    :disabled="disabled"
+    :disabled="disabled || loading"
     :class="[theme, isBorder, isRound, sizes, blockCss]"
     :style="minWidthCss"
   >
     <span>
+      <i v-if="loading" class="iconfont icon-perfix icon-jiazai1"></i>
       <i v-if="perfix" class="iconfont icon-perfix" :class="iconPerfix"></i>
       <slot></slot>
       <i v-if="suffix" class="iconfont icon-suffix" :class="iconSuffix"></i>
@@ -26,7 +27,9 @@ export default {
     round: Boolean, //是否圆角,默认false
     disabled: Boolean, //是否禁用,默认false
     block: Boolean, //块级block
-    size: { // medium、small、mini
+    loading: Boolean, //加载效果
+    size: {
+      // medium、small、mini
       //按钮大小
       type: String,
       default: "",
@@ -71,9 +74,9 @@ export default {
     iconSuffix() {
       return this.suffix ? `icon-${this.suffix}` : "";
     },
-    blockCss(){
-        return this.block ? "a-button-block" : "";
-    }
+    blockCss() {
+      return this.block ? "a-button-block" : "";
+    },
   },
   data() {
     return {};
@@ -93,7 +96,9 @@ export default {
   font-size: 14px;
   color: #606266;
   height: 40px;
-  +.a-button{margin-left: 10px;}
+  + .a-button {
+    margin-left: 10px;
+  }
   > span {
     //弹性布局--使icon水平线一致
     display: flex;
@@ -101,9 +106,16 @@ export default {
     justify-content: center;
   }
 
-    i { width: 14px;height: 14px;}
-    .icon-perfix { margin-right: 10px;}
-    .icon-suffix { margin-left: 10px;}
+  i {
+    width: 14px;
+    height: 14px;
+  }
+  .icon-perfix {
+    margin-right: 10px;
+  }
+  .icon-suffix {
+    margin-left: 10px;
+  }
 }
 .a-button-medium {
   //size中型
@@ -114,16 +126,24 @@ export default {
   padding: 0 15px;
   height: 32px;
   font-size: 12px;
-  .icon-perfix { margin-right: 5px;}
-  .icon-suffix { margin-left: 5px;}
+  .icon-perfix {
+    margin-right: 5px;
+  }
+  .icon-suffix {
+    margin-left: 5px;
+  }
 }
 .a-button-mini {
   //size迷你型
   padding: 0 15px;
   height: 28px;
   font-size: 12px;
-  .icon-perfix { margin-right: 5px;}
-  .icon-suffix { margin-left: 5px;}
+  .icon-perfix {
+    margin-right: 5px;
+  }
+  .icon-suffix {
+    margin-left: 5px;
+  }
 }
 .a-button[disabled] {
   //禁用样式
@@ -175,7 +195,21 @@ export default {
 }
 
 /*块级block*/
-.a-button-block{
-    display: block;
+.a-button-block {
+  display: block;
+  width: 100%;
+}
+
+/*加载效果*/
+.icon-jiazai1 {
+    animation: rotate 2s infinite linear;
+}
+@keyframes rotate{
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 </style>

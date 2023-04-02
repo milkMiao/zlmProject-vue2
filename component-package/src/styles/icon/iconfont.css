@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1680401016712') format('truetype');
+  font-family: "iconfont"; /* Project id 3991416 */
+  src: url('iconfont.ttf?t=1680409460518') format('truetype');
 }
 
 .iconfont {
@@ -11,8 +11,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-jiazai:before {
+  content: "\e607";
+}
+
+.icon-jiazai1:before {
+  content: "\e6b4";
+}
+
+.icon-jiazai2:before {
+  content: "\e60f";
+}
+
 .icon-lingdang:before {
-  content: "\f01f5";
+  content: "\e600";
 }
 
 .icon-wujiaoxing:before {
@@ -28,6 +40,6 @@
 }
 
 .icon-shoucang:before {
-  content: "\e519";
+  content: "\e601";
 }
 
