@@ -1,12 +1,13 @@
 <template>
   <button
+    @click="change"
     class="a-button"
-    :disabled="disabled || loading"
+    :disabled="disabled || loading || load"
     :class="[theme, isBorder, isRound, sizes, blockCss]"
     :style="minWidthCss"
   >
     <span>
-      <i v-if="loading" class="iconfont icon-perfix icon-jiazai1"></i>
+      <i v-if="loading || load" class="iconfont icon-perfix icon-jiazai1"></i>
       <i v-if="perfix" class="iconfont icon-perfix" :class="iconPerfix"></i>
       <slot></slot>
       <i v-if="suffix" class="iconfont icon-suffix" :class="iconSuffix"></i>
@@ -49,6 +50,7 @@ export default {
       type: String,
       default: "",
     },
+    beforeChange: Function
   },
   computed: {
     theme() {
@@ -79,7 +81,26 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+        load: false
+    };
+  },
+  methods: {
+    //事件回调--调用父组件的click事件
+    change(){
+        console.log("change---子组件", typeof this.beforeChange, )
+        if(typeof this.beforeChange === "function") {
+            this.load = true
+            this.beforeChange().then(response =>{
+                this.load = false
+                console.log("成功", response)
+            }).catch(()=>{
+                this.load = false
+                console.log("失败")
+            })
+        }
+        this.$emit('click');
+    }
   },
 };
 </script>
@@ -202,14 +223,14 @@ export default {
 
 /*加载效果*/
 .icon-jiazai1 {
-    animation: rotate 2s infinite linear;
+  animation: rotate 2s infinite linear;
 }
-@keyframes rotate{
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
