@@ -9,7 +9,7 @@
         width="55"
         :index="index"
       ></el-table-column>
-      
+
       <!-- 复选框 -->
       <el-table-column
         v-if="checkbox"
@@ -84,7 +84,7 @@ export default {
       default: "",
       require: true
     },
-    methods: {
+    method: {
       type: String,
       default: "post",
       require: true
@@ -94,22 +94,22 @@ export default {
     return {
       tableData: [
         {
-          date: "2016-05-02",
+          create_date: "2016-05-02",
           name: "王小虎",
           address: "上海市普陀区金沙江路 1518 弄",
         },
         {
-          date: "2016-05-04",
+          create_date: "2016-05-04",
           name: "赵喵喵",
           address: "上海市普陀区金沙江路 1517 弄",
         },
         {
-          date: "2016-05-01",
+          create_date: "2016-05-01",
           name: "张五五",
           address: "上海市普陀区金沙江路 1519 弄",
         },
         {
-          date: "2016-05-03",
+          create_date: "2016-05-03",
           name: "李琪琪",
           address: "上海市普陀区金沙江路 1516 弄",
         },
@@ -120,16 +120,16 @@ export default {
     this.getTableList();
   },
   methods: {
-    //http://old.web-jshtml.cn/api/react/staff/list/
     getTableList(){
       const url = this.url;
       if(!url) console.log("请求地址不存在！")
 
       this.$axios({
         url: this.url,
-        methods: this.methods,
+        methods: this.method,
       }).then((response) => {
-        console.log("beforeMount-----", response);
+        this.tableData = response.data.data;
+        console.log("beforeMount-----", response.data);
       });
     }
   },
