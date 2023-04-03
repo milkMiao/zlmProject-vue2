@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Table组件封装</h1>
-        <el-table :data="tableData" style="width: 100%;border: 1px solid #ccc;">
+        <el-table :data="tableData" border style="width: 100%;">
             <!-- 索引 -->
             <el-table-column v-if="index" type="index" width="55" :index="index"></el-table-column>
             <!-- 复选框 -->
@@ -17,10 +17,10 @@
               <!-- 2、slot插槽类型 -->
               <el-table-column v-else-if="item.type === 'slot'" :key="item.prop" :prop="item.prop" :label="item.label" :width="item.width" >
                 <template slot-scope="scope">
-                  <slot :name="item.slot_name"></slot>
+                  <slot :name="item.slot_name" :data="scope.row"></slot>
                 </template>
               </el-table-column>
-              
+
               <!-- 其他 -->
               <el-table-column v-else :key="item.prop" :prop="item.prop" :label="item.label" :width="item.width" ></el-table-column>
             </template>
