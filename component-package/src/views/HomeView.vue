@@ -12,6 +12,7 @@
       :checkbox="true"
       :url="'/api/name/'"
       :method="'post'"
+      :format="formatData"
     >
       <!-- 插槽作用：
         1、渲染数据 ；
@@ -104,7 +105,13 @@ export default {
       console.log("编辑---", row);
     },
     onload(data){
-      console.log("父---onload事件", data)
+      console.log("父---onload数据回调", data)
+    },
+    formatData(data){
+      //格式化回调数据
+      console.log('格式化回调数据--', data)
+      const first_data = [data[0],data[1]]
+      return first_data;
     }
   },
 };

@@ -109,7 +109,9 @@ export default {
     onLoad: {
       type: Boolean,
       default: false,
-    }
+    },
+    /**格式化回调数据*/
+    format: Function,
   },
   data() {
     return {
@@ -172,13 +174,21 @@ export default {
 
       //接口请求
       this.$axios(request_data).then((response) => {
-        this.tableData = response.data.data;
-        console.log("onLoad----", this.onLoad)
+        //未格式化的数据
+        // this.tableData = response.data.data;
+
+        //格式化后的回调数据 
+        let request_data = response.data.data
+        if(this.format && (typeof this.format ==='function')){
+          request_data = this.format(response.data.data)
+        }
+        console.log("getTableList-----", request_data);
+        this.tableData = request_data
+
         //方法一：回调数据
         // if(this.onLoad) {
         //   this.$emit('onload', response.data.data)
         // }
-
         //方法二：回调数据
         this.onLoad && this.$emit('onload', response.data.data)
         // console.log("getTableList-----", response.data);
