@@ -4,6 +4,8 @@
     <h2>表格1---</h2>
     <ATable
       ref="table"
+      :onLoad="false"
+      @onload="onload"
       :initRequest="false"
       :column="column"
       :index="1"
@@ -101,6 +103,9 @@ export default {
     jumn(row) {
       console.log("编辑---", row);
     },
+    onload(data){
+      console.log("父---onload事件", data)
+    }
   },
 };
 </script>

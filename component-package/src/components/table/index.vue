@@ -104,6 +104,11 @@ export default {
     initRequest: {
       type: Boolean,
       default: true,
+    },
+    /**onload回调函数*/
+    onLoad: {
+      type: Boolean,
+      default: false,
     }
   },
   data() {
@@ -168,7 +173,15 @@ export default {
       //接口请求
       this.$axios(request_data).then((response) => {
         this.tableData = response.data.data;
-        console.log("beforeMount-----", response.data);
+        console.log("onLoad----", this.onLoad)
+        //方法一：回调数据
+        // if(this.onLoad) {
+        //   this.$emit('onload', response.data.data)
+        // }
+
+        //方法二：回调数据
+        this.onLoad && this.$emit('onload', response.data.data)
+        // console.log("getTableList-----", response.data);
       });
     },
     //手动请求数据
