@@ -89,6 +89,7 @@ export default {
       default: "post",
       require: true
     },
+
     /**请求数据和接口参数*/
     data: {
       type: Array,
@@ -98,35 +99,48 @@ export default {
       type: Object,
       default: () => ({}),
     },
+
+    /**初始化请求*/
+    initRequest: {
+      type: Boolean,
+      default: true,
+    }
   },
   data() {
     return {
       tableData: [
-        {
-          create_date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          create_date: "2016-05-04",
-          name: "赵喵喵",
-          address: "上海市普陀区金沙江路 1517 弄",
-        },
-        {
-          create_date: "2016-05-01",
-          name: "张五五",
-          address: "上海市普陀区金沙江路 1519 弄",
-        },
-        {
-          create_date: "2016-05-03",
-          name: "李琪琪",
-          address: "上海市普陀区金沙江路 1516 弄",
-        },
+        // {
+        //   create_date: "2016-05-02",
+        //   name: "默认数据",
+        //   address: "上海市普陀区金沙江路 1518 弄",
+        // },
+        // {
+        //   create_date: "2016-05-02",
+        //   name: "王小虎",
+        //   address: "上海市普陀区金沙江路 1518 弄",
+        // },
+        // {
+        //   create_date: "2016-05-04",
+        //   name: "赵喵喵",
+        //   address: "上海市普陀区金沙江路 1517 弄",
+        // },
+        // {
+        //   create_date: "2016-05-01",
+        //   name: "张五五",
+        //   address: "上海市普陀区金沙江路 1519 弄",
+        // },
+        // {
+        //   create_date: "2016-05-03",
+        //   name: "李琪琪",
+        //   address: "上海市普陀区金沙江路 1516 弄",
+        // },
       ],
     };
   },
   beforeMount() {
-    this.getTableList();
+    //根据initRequest，实现初始化是否--请求一次接口
+    console.log("初始化请求---", this.initRequest)
+    this.initRequest && this.getTableList();
   },
   methods: {
     getTableList(){
@@ -156,6 +170,11 @@ export default {
         this.tableData = response.data.data;
         console.log("beforeMount-----", response.data);
       });
+    },
+    //手动请求数据
+    handlerRequest(){
+      console.log("手动请求数据")
+      this.getTableList();
     }
   },
 };

@@ -3,6 +3,8 @@
     <!-- 封装表格 -->
     <h2>表格1---</h2>
     <ATable
+      ref="table"
+      :initRequest="false"
       :column="column"
       :index="1"
       :checkbox="true"
@@ -88,6 +90,11 @@ export default {
       data_1: [{ name: "data" }],
       params_1: { name: "params" },
     };
+  },
+  mounted(){
+    setTimeout(()=>{
+      this.$refs.table.handlerRequest();
+    },3000)
   },
   methods: {
     //编辑
