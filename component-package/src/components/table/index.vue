@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Table组件封装</h1>
-    <el-table :data="tableData" border style="width: 100%">
+    <el-table @selection-change="handlerSelectChange" :data="tableData" border style="width: 100%">
       <!-- 索引 -->
       <el-table-column
         v-if="index"
@@ -112,6 +112,12 @@ export default {
     },
     /**格式化回调数据*/
     format: Function,
+
+    /**复选框-选中的数据list*/
+    checkList: {
+      type: Array,
+      default: ()=>[]
+    }
   },
   data() {
     return {
@@ -198,6 +204,15 @@ export default {
     handlerRequest(){
       console.log("手动请求数据")
       this.getTableList();
+    },
+    //勾选--复选框
+    handlerSelectChange(val){//val勾选中的表格数据
+      console.log("handlerSelectChange", val)
+      //方法1:
+      this.$emit("update:check_list", val)
+
+      //方法2:
+      // this.$emit('selectChange', val)
     }
   },
 };

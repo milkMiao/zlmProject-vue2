@@ -28,7 +28,13 @@
     </ATable>
 
     <h2>表格2---</h2>
+    <el-button @click="getCheckList">数据测试</el-button>
+    <!-- 
+      :check_list.sync="check_list" 方法1
+      @selectChange="selectChange"  方法2
+    -->
     <ATable
+      :check_list.sync="check_list"
       :column="column_fruit"
       :index="1"
       :checkbox="true"
@@ -92,26 +98,45 @@ export default {
       //接口传参--data方式&params方式
       data_1: [{ name: "data" }],
       params_1: { name: "params" },
+
+      // 复选框选中的list
+      check_list: [],
     };
   },
-  mounted(){
-    setTimeout(()=>{
+  mounted() {
+    setTimeout(() => {
       this.$refs.table.handlerRequest();
-    },3000)
+    }, 3000);
+  },
+  watch: {
+    //监听--复选框的选中的数据
+    check_list: {
+      handler(value) {
+        console.log("watch---check_list", value);
+      },
+    },
   },
   methods: {
     //编辑
     jumn(row) {
       console.log("编辑---", row);
     },
-    onload(data){
-      console.log("父---onload数据回调", data)
+    onload(data) {
+      console.log("父---onload数据回调", data);
     },
-    formatData(data){
+    formatData(data) {
       //格式化回调数据
-      console.log('格式化回调数据--', data)
-      const first_data = [data[0],data[1]]
+      console.log("格式化回调数据--", data);
+      const first_data = [data[0], data[1]];
       return first_data;
+    },
+    //方法2
+    selectChange(data){
+      this.check_list = data
+      console.log("复选框--勾选中的--表格数据", data)
+    },
+    getCheckList(){
+      console.log('check_list', this.check_list)
     }
   },
 };
