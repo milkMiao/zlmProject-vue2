@@ -1,7 +1,7 @@
 <template>
   <div class="table">
     <!-- 封装按钮 -->
-    <ATable :column="column"/>
+   <ATable :column="column" :index="1" :checkbox="true" />
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       column: [
-        { label: "日期", prop: "date" },
+        { label: "日期", prop: "date", width: 200 },
         { label: "姓名", prop: "name" },
         { label: "地址", prop: "address" }
       ],
