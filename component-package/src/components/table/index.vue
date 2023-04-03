@@ -8,11 +8,20 @@
             <el-table-column  v-if="checkbox" type="selection" width="55" :checkbox="checkbox"></el-table-column>
             <!-- 表格内容 -->
             <template v-for="item in column">
+              <!-- 1、function类型 -->
               <el-table-column v-if="item.type === 'function'" :key="item.prop" :prop="item.prop" :label="item.label" :width="item.width" >
                 <template slot-scope="scope">
                   <div v-html="item.callback && item.callback(scope.row)"></div>
                 </template>
               </el-table-column>
+              <!-- 2、slot插槽类型 -->
+              <el-table-column v-else-if="item.type === 'slot'" :key="item.prop" :prop="item.prop" :label="item.label" :width="item.width" >
+                <template slot-scope="scope">
+                  <slot :name="item.slot_name"></slot>
+                </template>
+              </el-table-column>
+              
+              <!-- 其他 -->
               <el-table-column v-else :key="item.prop" :prop="item.prop" :label="item.label" :width="item.width" ></el-table-column>
             </template>
         </el-table>
