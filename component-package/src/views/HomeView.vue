@@ -1,17 +1,17 @@
 <template>
   <div class="table">
     <!-- 封装表格 -->
-    <ATable :column="column" :index="1" :checkbox="true"> 
+    <ATable :column="column" :index="1" :checkbox="true" :url="'/api/name/'" :methods="post"> 
       <!-- 插槽作用：
         1、渲染数据 ；
         2、作用域插槽传输数据-将子组件内容传递给父组件；【如：操作栏-编辑按钮，内容传递给弹出栏；】
       -->
-      <template v-slot:operation="slot"> <!-- slot自定义名称 -->
+      <!-- slot自定义名称 -->
+      <template v-slot:operation="slot">
         {{slot.data.name}}
         <el-button>详情</el-button>
         <el-button type="primary" @click="jumn(slot.data)">编辑</el-button>
         <el-button type="danger">删除</el-button>
-        <!-- <AButton type="primary">编辑</AButton>  自己封装的button组件 -->
       </template>
     </ATable>
   </div>
