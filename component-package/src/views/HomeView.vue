@@ -1,24 +1,40 @@
 <template>
   <div class="table">
     <!-- 封装表格 -->
-    <ATable :column="column" :index="1" :checkbox="true" :url="'/api/name/'" :method="'post'"> 
+    <h2>表格1---</h2>
+    <ATable
+      :column="column"
+      :index="1"
+      :checkbox="true"
+      :url="'/api/name/'"
+      :method="'post'"
+    >
       <!-- 插槽作用：
         1、渲染数据 ；
         2、作用域插槽传输数据-将子组件内容传递给父组件；【如：操作栏-编辑按钮，内容传递给弹出栏；】
       -->
       <!-- slot自定义名称 -->
       <template v-slot:operation="slot">
-        {{slot.data.id}}
+        {{ slot.data.id }}
         <el-button>详情</el-button>
         <el-button type="primary" @click="jumn(slot.data)">编辑</el-button>
         <el-button type="danger">删除</el-button>
       </template>
     </ATable>
 
-    
-    <ATable :column="column_fruit" :index="1" :checkbox="true" :url="'/api/fruit/'" :method="'post'"> 
+    <h2>表格2---</h2>
+    <ATable
+      :column="column_fruit"
+      :index="1"
+      :checkbox="true"
+      :url="'/api/fruit/'"
+      :method="'post'"
+      :data="data_1"
+      :params="params_1"
+    >
+      <!-- 接口参数params--问号后边的，http://localhost:8080/api/fruit/?name=haha -->
       <template v-slot:operation="slot">
-        {{slot.data.id}}
+        {{ slot.data.id }}
         <el-button type="primary" @click="jumn(slot.data)">编辑</el-button>
       </template>
     </ATable>
@@ -32,7 +48,7 @@ export default {
   name: "HomeView",
   components: {
     ATable: () => import("@/components/table"),
-    AButton: ()=> import("@/components/button")
+    AButton: () => import("@/components/button"),
   },
   data() {
     return {
@@ -67,13 +83,17 @@ export default {
           slot_name: "operation",
         },
       ],
+
+      //接口传参--data方式&params方式
+      data_1: [{ name: "data" }],
+      params_1: { name: "params" },
     };
   },
   methods: {
     //编辑
-    jumn(row){
-      console.log("编辑---", row)
-    }
+    jumn(row) {
+      console.log("编辑---", row);
+    },
   },
 };
 </script>

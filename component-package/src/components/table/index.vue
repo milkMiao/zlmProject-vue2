@@ -88,7 +88,16 @@ export default {
       type: String,
       default: "post",
       require: true
-    }
+    },
+    /**请求数据和接口参数*/
+    data: {
+      type: Array,
+      default: () => ([]),
+    },
+    params: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   data() {
     return {
@@ -124,10 +133,26 @@ export default {
       const url = this.url;
       if(!url) console.log("请求地址不存在！")
 
-      this.$axios({
+      const request_data = {
         url: this.url,
         methods: this.method,
-      }).then((response) => {
+        data: this.data,
+        params: this.params
+      }
+      console.log("data--",JSON.stringify(this.data)) //字符串 [{"name":"hello"}]
+      console.log("params--", JSON.stringify(this.params)) // 字符串 {"name":"haha"}
+
+      //参数处理
+      if(JSON.stringify(this.data) !== '[]'){
+        request_data.data = this.data
+      }
+      if(JSON.stringify(this.params) !== '{}'){
+        request_data.data = this.params
+      }
+      console.log("---data & params-----& request_data:", this.data,this.params, request_data )
+
+      //接口请求
+      this.$axios(request_data).then((response) => {
         this.tableData = response.data.data;
         console.log("beforeMount-----", response.data);
       });
