@@ -64,18 +64,20 @@ export default {
   data() {
     return {
       column: [
+        // type=function, 自动读取 components/control内对应的function文件index.vue内容
         {
           type: "function",
           label: "URL地址",
           prop: "url",
           width: 100,
           callback: (data) => {
-            // console.log("scope.row----function类型", data);
+            console.log("function--动态组件", data);
             return `<a href='http://www.web-jshtml.cn'>${data.name}</a>`;
           },
         },
         //远程排序，sort设置成column即可，@sort-change事件【当表格的排序条件发生变化的时候会触发该事件】
         // sort_by: 指定数据按照哪个属性进行排序 【sortable 设置为 true 且没有设置 sort-method 的时候有效】
+        // type=text, 自动读取 components/control内对应的text文件index.vue内容
         { label: "日期", prop: "create_date", sort: 'column' , sort_by: 'HHHHH'}, 
         { label: "姓名", prop: "name", width: 200 },
         { label: "性别", prop: "gender", sort: true },
@@ -92,8 +94,8 @@ export default {
         },
       ],
       column_fruit: [
-        { label: "姓名", prop: "name" },
-        { label: "类别", prop: "type" },
+        { type: "text", label: "姓名", prop: "name" },
+        { type: "function", label: "类别", prop: "type" },
         {
           type: "slot",
           label: "操作",

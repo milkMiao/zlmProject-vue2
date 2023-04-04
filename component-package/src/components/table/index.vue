@@ -40,6 +40,8 @@
           :width="item.width"
         >
           <template slot-scope="scope">
+             <!-- component：动态组件使用 ，为组件绑定data数据，config配置 -->
+            <component :data="scope.row" :config="item" :is="!item.type ? 'com-function' : `com-${item.type}`" />
             <div v-html="item.callback && item.callback(scope.row)"></div>
           </template>
         </el-table-column>
@@ -70,7 +72,12 @@
           :prop="item.prop"
           :label="item.label"
           :width="item.width"
-        ></el-table-column>
+        >
+          <!-- component：动态组件使用 ，为组件绑定data数据，config配置 -->
+          <template slot-scope="scope">
+            <component :data="scope.row" :config="item" :is="!item.type ? 'com-text' : `com-${item.type}`" />
+          </template>
+        </el-table-column>
       </template>
     </el-table>
   </div>
@@ -89,7 +96,7 @@ files.keys().forEach((item) => {
   const component = files(item).default;
   //  console.log('files------后', component)
   //组件集成
-  modules[`cpm-${name}`] = component; //files(item).default
+  modules[`com-${name}`] = component; //files(item).default
 });
 console.log("files------组件集成", modules);
 
