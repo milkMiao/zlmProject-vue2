@@ -84,6 +84,11 @@ export default {
           label: "操作",
           prop: "operation",
           slot_name: "operation",
+          render_header: (h, {column, $index})=>{ //自定义表头的意思
+            return(
+              <div>自定义--操作</div>
+            )
+          }
         },
       ],
       column_fruit: [

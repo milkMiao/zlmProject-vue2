@@ -26,11 +26,14 @@
 
       <!-- 表格内容 -->
       <template v-for="item in column">
-        <!-- 1、function类型, 排序只针对当前页-其他页面还不行 -->
+        <!-- 1、function类型, 排序只针对当前页-其他页面还不行
+            render-header：列标题 Label 区域渲染使用的 Function
+        -->
         <el-table-column
           v-if="item.type === 'function'"
           :sortable="item.sort"
           :sort-by="item.sort_by"
+          :render-header="item.render_header"
           :key="item.prop"
           :prop="item.prop"
           :label="item.label"
@@ -46,6 +49,7 @@
           v-else-if="item.type === 'slot'"
           :sortable="item.sort"
           :sort-by="item.sort_by"
+          :render-header="item.render_header"
           :key="item.prop"
           :prop="item.prop"
           :label="item.label"
@@ -61,6 +65,7 @@
           v-else
           :sortable="item.sort"
           :sort-by="item.sort_by"
+          :render-header="item.render_header"
           :key="item.prop"
           :prop="item.prop"
           :label="item.label"
