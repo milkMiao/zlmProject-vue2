@@ -79,15 +79,32 @@
 <script>
 /**
  * 自动化的规则，通过type属性，自动读取到目录的组件！！！
- * 1、读取的目录
- * 2、true读取目录下的子文件
- * 3、读取子文件下的 index.vue文件
-*/
-const files = require.context("../control", true, /\index.vue$/)
-console.log('files------', files)
+ * 1、读取的目录 2、true读取目录下的子文件 3、读取子文件下的 index.vue文件
+ */
+const modules = {};
+const files = require.context("../control", true, /\index.vue$/);
+files.keys().forEach((item) => {
+  const key = item.split("/");
+  const name = key[1];
+  const component = files(item).default;
+  //  console.log('files------后', component)
+  //组件集成
+  modules[`cpm-${name}`] = component; //files(item).default
+});
+console.log("files------组件集成", modules);
 
 export default {
   name: "Table",
+  components: {
+    /**
+     * 数据格式化成如下所示即可：
+     * 'com-function': ()=> import("../control/function"),
+     * 'com-image': ()=> import("../control/image"),
+     * 'com-text': ()=> import("../control/text")
+     *
+     */
+    ...modules,
+  },
   props: {
     index: {
       //索引
