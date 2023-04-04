@@ -1,6 +1,6 @@
 <template>
   <!-- <div v-html="config.callback && config.callback(config)">qqqq</div> -->
-  <div>function----index.vue 函数业务</div>
+  <div>function----index.vue 函数动态组件--业务</div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div>text----index.vue {{config}}</div>
+  <div>text----index.vue文本动态组件--业务</div>
 </template>
   
   <script>

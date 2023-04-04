@@ -40,8 +40,9 @@
           :width="item.width"
         >
           <template slot-scope="scope">
+            <slot v-if="item.type == 'slot'" :name="item.slot_name" :data="scope.row"></slot>
              <!-- component：动态组件使用 ，为组件绑定data数据，config配置 -->
-            <component :data="scope.row" :config="item" :is="!item.type ? 'com-function' : `com-${item.type}`" />
+            <component v-else :is="!item.type ? 'com-function' : `com-${item.type}`" :data="scope.row" :config="item" />
             <div v-html="item.callback && item.callback(scope.row)"></div>
           </template>
         </el-table-column>
@@ -62,9 +63,8 @@
           </template>
         </el-table-column>
 
-        <!-- 其他，排序只针对当前页-其他页面还不行 -->
         <el-table-column
-          v-else
+          v-else-if="item.type === 'text'"
           :sortable="item.sort"
           :sort-by="item.sort_by"
           :render-header="item.render_header"
@@ -78,6 +78,18 @@
             <component :data="scope.row" :config="item" :is="!item.type ? 'com-text' : `com-${item.type}`" />
           </template>
         </el-table-column>
+
+        <!-- 其他，排序只针对当前页-其他页面还不行 -->
+        <el-table-column
+          v-else
+          :sortable="item.sort"
+          :sort-by="item.sort_by"
+          :render-header="item.render_header"
+          :key="item.prop"
+          :prop="item.prop"
+          :label="item.label"
+          :width="item.width"
+        ></el-table-column>
       </template>
     </el-table>
   </div>
