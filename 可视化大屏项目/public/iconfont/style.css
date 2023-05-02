@@ -1,0 +1,177 @@
+@font-face {
+  font-family: 'icon';
+  src:  url('fonts/icon.eot?nnurkm');
+  src:  url('fonts/icon.eot?nnurkm#iefix') format('embedded-opentype'),
+    url('fonts/icon.ttf?nnurkm') format('truetype'),
+    url('fonts/icon.woff?nnurkm') format('woff'),
+    url('fonts/icon.svg?nnurkm#icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-area:before {
+  content: "\e900";
+}
+.icon-height:before {
+  content: "\e901";
+}
+.icon-length:before {
+  content: "\e902";
+}
+.icon-point:before {
+  content: "\e903";
+}
+.icon-map:before {
+  content: "\e904";
+}
+.icon-d:before {
+  content: "\e905";
+}
+.icon-arrow_left:before {
+  content: "\e906";
+}
+.icon-arrow_right:before {
+  content: "\e907";
+}
+.icon-attribute:before {
+  content: "\e908";
+}
+.icon-basics_geo:before {
+  content: "\e909";
+}
+.icon-calculate:before {
+  content: "\e90a";
+}
+.icon-contrast:before {
+  content: "\e90b";
+}
+.icon-ecomoic_data1:before {
+  content: "\e90c";
+}
+.icon-export:before {
+  content: "\e90d";
+}
+.icon-flood_level:before {
+  content: "\e90e";
+}
+.icon-fly:before {
+  content: "\e90f";
+}
+.icon-home:before {
+  content: "\e910";
+}
+.icon-layer:before {
+  content: "\e911";
+}
+.icon-library:before {
+  content: "\e912";
+}
+.icon-loc:before {
+  content: "\e913";
+}
+.icon-logout:before {
+  content: "\e914";
+}
+.icon-measure:before {
+  content: "\e915";
+}
+.icon-menu:before {
+  content: "\e916";
+}
+.icon-minus:before {
+  content: "\e917";
+}
+.icon-model_choose:before {
+  content: "\e918";
+}
+.icon-plan:before {
+  content: "\e919";
+}
+.icon-plus:before {
+  content: "\e91a";
+}
+.icon-project_scheduling:before {
+  content: "\e91b";
+}
+.icon-rainfall:before {
+  content: "\e91c";
+}
+.icon-rate:before {
+  content: "\e91d";
+}
+.icon-risk_analysis:before {
+  content: "\e91e";
+}
+.icon-risk_statistics:before {
+  content: "\e91f";
+}
+.icon-rolling_screen:before {
+  content: "\e920";
+}
+.icon-search:before {
+  content: "\e921";
+}
+.icon-shape_filter:before {
+  content: "\e922";
+}
+.icon-split_screen:before {
+  content: "\e923";
+}
+.icon-statistics:before {
+  content: "\e924";
+}
+.icon-time_change:before {
+  content: "\e925";
+}
+.icon-time_choose:before {
+  content: "\e926";
+}
+.icon-username:before {
+  content: "\e927";
+}
+.icon-close:before {
+  content: "\e928";
+}
+.icon-triangle_down:before {
+  content: "\e929";
+}
+.icon-triangle_left:before {
+  content: "\e92a";
+}
+.icon-triangle_right:before {
+  content: "\e92b";
+}
+.icon-triangle_up:before {
+  content: "\e92c";
+}
+.icon-more:before {
+  content: "\e92d";
+}
+.icon-dd:before {
+  content: "\e92e";
+}
+.icon-clear:before {
+  content: "\e92f";
+}
+.icon-ecomoic_data:before {
+  content: "\e930";
+}
+.icon-flood_data:before {
+  content: "\e931";
+}

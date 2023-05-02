@@ -1,0 +1,62 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.ant-menu.ant-menu-inline-collapsed > .ant-menu-item,
+.ant-menu.ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-item,
+.ant-menu.ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-submenu > .ant-menu-submenu-title,
+.ant-menu.ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title {
+  padding: 0 calc(50% - 30px / 2) !important;
+}
+.ant-modal-wrap.custom-dialog {
+  visibility: hidden;
+  .ant-modal {
+    transition: all 0.3s;
+    visibility: visible;
+  }
+  .ant-modal.full-screen-modal {
+    width: 100% !important;
+    top: 0;
+    padding-bottom: 0;
+    height: 100vh;
+    .ant-modal-content {
+      height: 100%;
+      .ant-modal-body {
+        height: calc(100% - 55px - 55px) !important;
+      }
+    }
+  }
+}
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ant-radio-group {
+  font-size: 14px !important;
+}
+.grade-popover {
+  .ant-popover-content .ant-popover-inner .ant-popover-inner-content {
+    padding: 0 10px;
+  }
+}

@@ -1,0 +1,29 @@
+diff --git a/node_modules/cesium-print/index.js b/node_modules/cesium-print/index.js
+index 9ec5455..8770ee6 100644
+--- a/node_modules/cesium-print/index.js
++++ b/node_modules/cesium-print/index.js
+@@ -56,11 +56,11 @@ export default {
+                 //创建全屏打印区域
+                 var canvas = document.createElement('canvas');
+                 // 网页可见区域宽设置
+-                canvas.width = document.body.clientWidth
++                canvas.width = this.printCanvasDom.clientWidth
+                 // 网页可见区域高设置
+-                canvas.height = document.body.clientHeight
+-                canvas.style = "position: absolute;left: 0;top: 0;"
+-                document.body.appendChild(canvas);
++                canvas.height = this.printCanvasDom.clientHeight
++                canvas.style = "position: absolute;left: 0;top: 0;z-index:999;"
++                this.printCanvasDom.parentNode.appendChild(canvas);
+ 
+                 //canvas 的矩形框
+                 var canvasRect = canvas.getBoundingClientRect();
+@@ -145,7 +145,7 @@ export default {
+                     $(canvas).saveCanvas();
+                     $(canvas).removeLayer('areaLayer');
+                     //删除画笔区域
+-                    document.body.removeChild(canvas);
++                    that.printCanvasDom.parentNode.removeChild(canvas);
+ 
+                     resolve(that.printClip());
+                 }

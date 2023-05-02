@@ -1,0 +1,68 @@
+$mainLightColor: rgb(29, 193, 245);
+.ant-form-item-label > label {
+  color: white !important;
+}
+.ant-input,
+.ant-select:not(.ant-select-customize-input) .ant-select-selector,
+.ant-input-affix-wrapper {
+  background-color: transparent !important;
+  border: 1px solid $mainLightColor !important;
+  color: white !important;
+}
+.ant-table,
+.ant-table-small .ant-table-thead > tr > th,
+.ant-table-tbody > tr.ant-table-placeholder:hover > td {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  color: white !important;
+}
+.ant-table.ant-table-bordered > .ant-table-container > .ant-table-header > table > thead > tr > th {
+  border-right: 1px solid $mainLightColor !important;
+}
+
+/* 表格滚动条优化 start */
+.ant-table .ant-table-content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.ant-table .ant-table-content::-webkit-scrollbar-track {
+  background: #f6f6f6;
+  border-radius: 2px;
+}
+
+.ant-table .ant-table-content::-webkit-scrollbar-thumb {
+  background: #cdcdcd;
+  border-radius: 2px;
+}
+
+.ant-table .ant-table-content::-webkit-scrollbar-thumb:hover {
+  background: #747474;
+}
+
+.ant-table .ant-table-content::-webkit-scrollbar-corner {
+  background: #f6f6f6;
+}
+
+.ant-table .ant-table-body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.ant-table .ant-table-body::-webkit-scrollbar-track {
+  background: #f6f6f6;
+  border-radius: 2px;
+}
+
+.ant-table .ant-table-body::-webkit-scrollbar-thumb {
+  background: #cdcdcd;
+  border-radius: 2px;
+}
+
+.ant-table .ant-table-body::-webkit-scrollbar-thumb:hover {
+  background: #747474;
+}
+
+.ant-table .ant-table-body::-webkit-scrollbar-corner {
+  background: #f6f6f6;
+}
+/* 表格滚动条优化 end */

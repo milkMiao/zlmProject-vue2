@@ -1,0 +1,78 @@
+/* 滚动条优化 start */
+.scrollbar{
+  overflow: auto;
+}
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #f6f6f6;
+  border-radius: 2px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #cdcdcd;
+  border-radius: 2px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #747474;
+}
+
+.scrollbar::-webkit-scrollbar-corner {
+  background: #f6f6f6;
+}
+/* 滚动条优化 end */
+
+
+/* 表格滚动条优化 start */
+.ant-table-scroll .ant-table-body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.ant-table-scroll .ant-table-body::-webkit-scrollbar-track {
+  background: #f6f6f6;
+  border-radius: 2px;
+}
+
+.ant-table-scroll .ant-table-body::-webkit-scrollbar-thumb {
+  background: #cdcdcd;
+  border-radius: 2px;
+}
+
+.ant-table-scroll .ant-table-body::-webkit-scrollbar-thumb:hover {
+  background: #747474;
+}
+
+.ant-table-scroll .ant-table-body::-webkit-scrollbar-corner {
+  background: #f6f6f6;
+}
+/* 表格滚动条优化 end */
+
+/* 编辑器滚动条 start */
+.CodeMirror-vscrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.CodeMirror-vscrollbar::-webkit-scrollbar-track {
+  background: #f6f6f6;
+  border-radius: 2px;
+}
+
+.CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
+  background: #cdcdcd;
+  border-radius: 2px;
+}
+
+.CodeMirror-vscrollbar::-webkit-scrollbar-thumb:hover {
+  background: #747474;
+}
+
+.CodeMirror-vscrollbar::-webkit-scrollbar-corner {
+  background: #f6f6f6;
+}
+/* 编辑器滚动条 end */
